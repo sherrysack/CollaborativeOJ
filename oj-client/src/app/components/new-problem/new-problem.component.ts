@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Problem} from "../../models/problem.model";
 import {PROBLEMS} from "../../mock-problems";
+import {AuthGuardService} from "../../services/auth-guard.service";
 
 
 const DEFAULT_PROBLEM: Problem = Object.freeze({
@@ -19,7 +20,8 @@ export class NewProblemComponent implements OnInit {
   newProblem: Problem = Object.assign({}, DEFAULT_PROBLEM);
 
 
-  constructor(@Inject("data") private data) { }
+  constructor(@Inject("data") private data,
+              @Inject(AuthGuardService) private authguard) { }
 
   ngOnInit() {
   }
